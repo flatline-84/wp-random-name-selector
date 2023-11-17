@@ -4,7 +4,7 @@
      * User is the winner.
      * Admin is who called the function.
      */
-    function add_winner_to_db($user, $admin){
+    function add_winner_to_db($user, $admin, $csv){
         global $wpdb;
         global $rns_db_name;
 
@@ -17,6 +17,7 @@
                 'userid' => $user->ID,
                 'email' => $user->user_email,
                 'admin' => $admin->display_name,
+                'csvid' => $csv, 
             ) 
         );
     }
@@ -42,6 +43,9 @@
             return;
         }
 
+        // Retrieve the CSV file option
+        $rns_csv_file = get_option('selected_csv_id');
+
         $random_user = get_random_user();
 
         // Load and include the template file
@@ -49,7 +53,7 @@
         include(plugin_dir_path(__FILE__) . 'rns-template.html.php');
         $html_content = ob_get_clean();
 
-        add_winner_to_db($random_user, $current_user);
+        add_winner_to_db($random_user, $current_user, $rns_csv_file);
 
         return $html_content;
     }

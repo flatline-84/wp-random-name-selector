@@ -10,7 +10,7 @@
      * GLOBAL VARS
     *****************************/
     global $rns_db_version;
-    $rns_db_version = '1.0';
+    $rns_db_version = '1.1';
     global $rns_db_name;
     $rns_db_name = 'random_name_selector';
 

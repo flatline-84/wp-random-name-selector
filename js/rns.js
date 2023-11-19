@@ -44,7 +44,9 @@ function handleButtonClick() {
 }
 
 function updateWinnerBox(winnerName) {
-    document.getElementById('winnerResult').innerHTML = winnerName;
+    const winnerResultDiv = document.getElementById('winnerResult');
+    winnerResultDiv.textContent = winnerName;
+    winnerResultDiv.classList.add('show');
 }
 
 // Attach the click event handler to the button

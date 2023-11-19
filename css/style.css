@@ -75,9 +75,42 @@
     }
 }
 
-/* #fetchButton:hover {
-    background-color: #2980b9;
-} */
+/* Winner Result! */
+/* Add some styles to the winnerResult div */
+#winnerResult {
+    font-size: 48px;
+    font-weight: bold;
+    display: none;
+    transform-origin: center;
+}
+
+/* Define the CSS animation for the flashy show */
+@keyframes flashyShow {
+    0% { transform: scale(0) rotate(0deg); opacity: 0; }
+    50% { transform: scale(1.5) rotate(180deg); opacity: 1; }
+    100% { transform: scale(1) rotate(360deg); opacity: 0; }
+}
+
+/* Apply the animation to the winnerResult when it has content */
+#winnerResult.show {
+    display: block;
+    animation-iteration-count: infinite;
+    text-align: center;
+    color: white;
+    background-image: linear-gradient(to right, violet, indigo, blue, green, orange, green, blue, indigo, violet);
+    background-size: 200% 100%;
+    animation: flashingColors 5s linear infinite;
+}
+
+@keyframes flashingColors {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
 
 /* Custom Warning Box CSS */
 .warning-box {

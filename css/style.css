@@ -76,30 +76,35 @@
 }
 
 /* Winner Result! */
-/* Add some styles to the winnerResult div */
+/* Remove animation for users who have reduced their motion preference */
+@media screen and (prefers-reduced-motion: reduce) {
+    .animate {
+        animation: none !important;
+    }
+}
+
 #winnerResult {
     font-size: 48px;
     font-weight: bold;
     display: none;
+    color: white;
+    text-align: center;
+    background-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red, orange, yellow, green, blue, indigo, violet);
+    background-size: 200% 100%;
+    animation: flashyShow 1.5s cubic-bezier(.26, .53, .74, 1.48), flashingColors 3s linear infinite;
     transform-origin: center;
 }
 
-/* Define the CSS animation for the flashy show */
 @keyframes flashyShow {
-    0% { transform: scale(0) rotate(0deg); opacity: 0; }
-    50% { transform: scale(1.5) rotate(180deg); opacity: 1; }
-    100% { transform: scale(1) rotate(360deg); opacity: 0; }
-}
+    0% {
+        opacity: 0;
+        transform: scale(0.5, 0.5);
+    }
 
-/* Apply the animation to the winnerResult when it has content */
-#winnerResult.show {
-    display: block;
-    animation-iteration-count: infinite;
-    text-align: center;
-    color: white;
-    background-image: linear-gradient(to right, violet, indigo, blue, green, orange, green, blue, indigo, violet);
-    background-size: 200% 100%;
-    animation: flashingColors 5s linear infinite;
+    100% {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
 }
 
 @keyframes flashingColors {
@@ -110,6 +115,10 @@
     100% {
         background-position: -200% 0;
     }
+}
+
+#winnerResult.show {
+    display: block;
 }
 
 /* Custom Warning Box CSS */

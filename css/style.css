@@ -1,6 +1,101 @@
 /* styles.css */
-h2 {
-    color: #ff0000;
-    font-size: 24px;
+
+#fetchButton {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    /* Adjust the width as needed */
+    padding: 15px 20px;
+    font-size: 18px;
+    font-weight: bold;
     text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #3498db;
+    /* Choose your desired background color */
+    color: #ffffff;
+    /* Choose your desired text color */
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.5s ease;
+    /* Add a transition for smooth color change */
+    animation: colorChange 8s infinite;
+    /* Run the colorChange animation infinitely */
+}
+
+@keyframes colorChange {
+
+    0%,
+    100% {
+        background-color: #3498db;
+    }
+
+    8.33% {
+        background-color: #2ecc71;
+    }
+
+    16.66% {
+        background-color: #f39c12;
+    }
+
+    25% {
+        background-color: #e74c3c;
+    }
+
+    33.33% {
+        background-color: #9b59b6;
+    }
+
+    41.66% {
+        background-color: #34495e;
+    }
+
+    50% {
+        background-color: #1abc9c;
+    }
+
+    58.33% {
+        background-color: #e67e22;
+    }
+
+    66.66% {
+        background-color: #27ae60;
+    }
+
+    75% {
+        background-color: #d35400;
+    }
+
+    83.33% {
+        background-color: #c0392b;
+    }
+
+    91.66% {
+        background-color: #2980b9;
+    }
+}
+
+/* #fetchButton:hover {
+    background-color: #2980b9;
+} */
+
+/* Custom Warning Box CSS */
+.warning-box {
+    background-color: #f8d7da;
+    /* Light red background color */
+    color: #721c24;
+    /* Dark red text color */
+    border: 1px solid #f5c6cb;
+    /* Border color */
+    padding: 15px;
+    /* Padding around the content */
+    margin-bottom: 20px;
+    /* Bottom margin to create space */
+    border-radius: 4px;
+    /* Rounded corners */
+}
+
+.warning-box p {
+    margin: 0;
+    /* Remove default margin for paragraphs */
 }

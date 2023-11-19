@@ -13,7 +13,7 @@
             id mediumint(9) NOT NULL AUTO_INCREMENT,
             time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
             username varchar(255) NOT NULL,
-            userid int(11) NOT NULL,
+            mobile varchar(255) NOT NULL,
             email varchar(255) NOT NULL,
             admin varchar(255) NOT NULL,
             csvid int(11) NOT NULL,
@@ -26,7 +26,8 @@
         add_option('rns_db_version', $rns_db_version);
     }
 
-    register_activation_hook(__FILE__, 'rns_db_install');
+    register_activation_hook(RNS_PLUGIN_FILE_URL, 'rns_db_install');
+
     // Add a menu page for the plugin settings
     function rns_plugin_menu() {
         add_menu_page(
@@ -136,7 +137,7 @@
             echo 'wpdb error: ' . $wpdb->last_error;
         }
 
-        $headers = ['datetime', 'username', 'email', 'admin', 'csv_file'];
+        $headers = ['datetime', 'username', 'mobile', 'email', 'admin', 'csv_file'];
         echo '<table>';
         echo '<tr>';
 
@@ -150,12 +151,14 @@
             $formatted_time = wp_date('Y-m-d H:i:s', $timestamp);
 
             $csv_name = get_the_title($row['csvid']);
+            $admin_name = get_user_by('id', $row['admin']);
 
             echo '<tr>';
-            echo '<td>' . esc_html($formatted_time) . '</td>';
+            echo '<td>' . esc_html($row['time']) . '</td>';
             echo '<td>' . esc_html($row['username']) . '</td>';
+            echo '<td>' . esc_html($row['mobile']) . '</td>';
             echo '<td>' . esc_html($row['email']) . '</td>';
-            echo '<td>' . esc_html($row['admin']) . '</td>';
+            echo '<td>' . esc_html($admin_name->display_name) . '</td>';
             echo '<td>' . esc_html($csv_name) . '</td>';
             echo '</tr>';
         }

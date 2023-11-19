@@ -1,14 +1,16 @@
+<!-- Including a Promise polyfill just in case this is used in an old browser -->
+<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise"></script>
+
 <div class="custom-container">
-    <h1>Welcome to goon of fortune!</h1>
-    <h2>Congrats to: <?php echo esc_html($random_user->display_name); ?></h2>
     <?php
-        // Check if the option has a value
-        if (!empty($rns_csv_file)) {
+        // Check if we have a CSV has a value
+        if (empty($rns_csv_file)) {
             // Output the CSV file value
-            echo 'CSV File: ' . esc_html($rns_csv_file);
-        } else {
-            // Output a message if the option is empty
-            echo 'No CSV file selected.';
+            echo '<div class="warning-box"><p>No CSV file selected in admin settings so no winner can be chosen!</p></div>';
         }
     ?>
+    <div id="winnerBox">
+        <button id="fetchButton">Pick a winner!</button>
+        <div id="winnerResult"></div>
+    </div>
 </div>
